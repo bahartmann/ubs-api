@@ -1,0 +1,5 @@
+pt-BR:
+  faker:
+    name:
+      ubs_scores: [ Desempenho mediano ou  um pouco abaixo da média, Desempenho
+                    acima da média, Desempenho muito acima da média]
