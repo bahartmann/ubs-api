@@ -4,6 +4,7 @@ require 'pry'
 RSpec.describe 'UBS API', type: :request do
 
   let!(:ubs) { create_list(:ubs, 10) }
+  let(:example_ubs) { ubs.first }
   let(:ubs_id) { ubs.first.id }
 
   describe 'GET /ubs' do
@@ -23,9 +24,13 @@ RSpec.describe 'UBS API', type: :request do
     before { get "/ubs/#{ubs_id}" }
 
     context 'when the ubs exists' do
-      it 'returns ubs' do
+      it 'returns ubs basic info' do
         expect(json).not_to be_empty
         expect(json['id']).to eq(ubs_id)
+        expect(json['name']).to eq(example_ubs.name)
+        expect(json['address']).to eq(example_ubs.address)
+        expect(json['city']).to eq(example_ubs.city)
+        expect(json['phone']).to eq(example_ubs.phone)
       end
 
       it 'returns status code 200' do
