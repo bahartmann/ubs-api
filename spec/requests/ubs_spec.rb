@@ -33,6 +33,11 @@ RSpec.describe 'UBS API', type: :request do
         expect(json['phone']).to eq(example_ubs.phone)
       end
 
+      it 'returns ubs geolocation info' do
+        expect(json['geocode']['lat']).to eq(example_ubs.geocode_lat)
+        expect(json['geocode']['long']).to eq(example_ubs.geocode_long)
+      end
+
       it 'returns status code 200' do
         expect(response).to have_http_status(200)
       end
